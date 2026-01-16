@@ -1,0 +1,13 @@
+<div class="notification is-success">
+    <button class="delete"
+            hx-get="/api/dismiss"
+            hx-target="closest .notification"
+            hx-swap="outerHTML"></button>
+    <p><strong>Import Successful!</strong></p>
+    <ul>
+        <li>{{ movements_count }} movements imported</li>
+        <li>{{ equipment_count }} equipment types imported</li>
+        <li>{{ weightlifting_count }} weightlifting sets imported</li>
+        <li>{{ cardio_count }} cardio sets imported</li>
+    </ul>
+</div>

@@ -1,0 +1,31 @@
+<div class="box">
+    <h2 class="title is-4">Import Data</h2>
+    <p class="subtitle is-6">Paste your exported JSON data from the Flutter app below:</p>
+
+    <form hx-post="/api/import"
+          hx-target="#import-result"
+          hx-swap="innerHTML">
+
+        <div class="field">
+            <div class="control">
+                <textarea class="textarea"
+                          name="json_data"
+                          rows="15"
+                          placeholder='{"exportDate": "...", "movements": [...], "equipmentTypes": [...], "weightliftingSets": [...], "cardioSets": [...]}'
+                          required></textarea>
+            </div>
+        </div>
+
+        <div class="field">
+            <div class="control">
+                <button class="button is-primary" type="submit">
+                    <span class="icon"><i class="fas fa-upload"></i></span>
+                    <span>Import Data</span>
+                    <span class="htmx-indicator icon"><i class="fas fa-spinner fa-pulse"></i></span>
+                </button>
+            </div>
+        </div>
+    </form>
+
+    <div id="import-result"></div>
+</div>

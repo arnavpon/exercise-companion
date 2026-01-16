@@ -1,0 +1,37 @@
+<div class="box">
+    <h2 class="title is-4">
+        {% if is_current %}
+        <span class="icon has-text-success"><i class="fas fa-circle"></i></span>
+        Current Workout
+        {% else %}
+        <span class="icon has-text-grey"><i class="fas fa-clock"></i></span>
+        Last Workout
+        {% endif %}
+    </h2>
+
+    {% if start_time %}
+    <div class="content">
+        <p><strong>Started:</strong> {{ start_time.strftime('%I:%M %p on %m/%d/%Y') }}</p>
+        <p><strong>Duration:</strong> {{ total_minutes }} minutes</p>
+    </div>
+
+    {% if exercises %}
+    <div class="content">
+        {% for movement, data in exercises.items() %}
+        <div class="box" style="background-color: #f5f5f5;">
+            <h4 class="subtitle is-5">{{ movement | title }}</h4>
+            <p>
+                <strong>{{ data.total_weight | round(2) }} lbs</strong> total
+                in <strong>{{ data.count }}</strong> {% if data.count == 1 %}set{% else %}sets{% endif %}
+            </p>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p class="has-text-grey">No exercises logged in this workout.</p>
+    {% endif %}
+
+    {% else %}
+    <p class="has-text-grey has-text-centered">No workout data available. Start logging exercises!</p>
+    {% endif %}
+</div>

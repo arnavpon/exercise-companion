@@ -1,0 +1,26 @@
+<div class="field has-addons">
+    <div class="control is-expanded">
+        <input class="input"
+               type="text"
+               id="visualizer-search"
+               name="movement"
+               value="{{ search_value | default('', true) }}"
+               placeholder="Search by movement name..."
+               hx-get="/api/visualizer/autocomplete"
+               hx-trigger="keyup changed delay:300ms"
+               hx-target="#search-suggestions"
+               hx-swap="innerHTML"
+               autocomplete="off">
+    </div>
+    <div class="control">
+        <button class="button is-info"
+                hx-get="/api/visualizer/search"
+                hx-include="#visualizer-search"
+                hx-target="#visualizer-results"
+                hx-swap="innerHTML">
+            <span class="icon"><i class="fas fa-search"></i></span>
+            <span>Search</span>
+        </button>
+    </div>
+</div>
+<div id="search-suggestions"></div>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise Mentor</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+    <style>
+        .autocomplete-dropdown {
+            position: absolute;
+            z-index: 1000;
+            width: 100%;
+            max-height: 200px;
+            overflow-y: auto;
+            background: white;
+            border: 1px solid #dbdbdb;
+            border-radius: 4px;
+            box-shadow: 0 2px 3px rgba(10,10,10,.1);
+        }
+        .autocomplete-dropdown a {
+            display: block;
+            padding: 0.5rem 1rem;
+            color: #363636;
+        }
+        .autocomplete-dropdown a:hover {
+            background-color: #f5f5f5;
+        }
+        .field-wrapper {
+            position: relative;
+        }
+        .htmx-indicator {
+            display: none;
+        }
+        .htmx-request .htmx-indicator {
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <section class="section">
+        <div class="container">
+            <h1 class="title has-text-centered">Exercise Mentor</h1>
+            {% block content %}{% endblock %}
+        </div>
+    </section>
+
+    <div id="notifications" class="container" style="position: fixed; top: 1rem; right: 1rem; z-index: 9999; max-width: 350px;"></div>
+</body>
+</html>

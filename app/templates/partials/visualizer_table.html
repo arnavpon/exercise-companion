@@ -1,0 +1,36 @@
+{% if aggregated_data %}
+<div class="table-container">
+    <table class="table is-fullwidth is-striped is-hoverable">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Movement</th>
+                <th>Total</th>
+                <th>Sets</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for day in aggregated_data %}
+            <tr>
+                <td>{{ day.date }}</td>
+                <td>{{ day.movement | title }}</td>
+                <td>{{ day.total_weight_or_reps }}</td>
+                <td>
+                    {% for set in day.sets %}
+                    <span class="tag is-light is-clickable"
+                          hx-get="/api/visualizer/edit/{{ set.id }}"
+                          hx-target="#modal-container"
+                          hx-swap="innerHTML"
+                          style="cursor: pointer; margin: 2px;">
+                        {{ set.weight }} lbs ({{ set.equipment_type }}) x{{ set.n_of_reps }}
+                    </span>
+                    {% endfor %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+<p class="has-text-grey has-text-centered">No results found for this movement</p>
+{% endif %}

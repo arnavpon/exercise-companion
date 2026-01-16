@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div id="tabs-container">
+    {% include "partials/tabs.html" %}
+</div>
+
+<div id="main-content" hx-get="/api/exercises/form" hx-trigger="load" hx-swap="innerHTML">
+    <div class="has-text-centered">
+        <span class="icon is-large">
+            <i class="fas fa-spinner fa-pulse fa-2x"></i>
+        </span>
+    </div>
+</div>
+{% endblock %}

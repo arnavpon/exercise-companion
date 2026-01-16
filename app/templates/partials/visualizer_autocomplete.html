@@ -1,0 +1,14 @@
+{% if results %}
+<div class="box" style="padding: 0; margin-top: 0.25rem;">
+    {% for item in results %}
+    <a class="dropdown-item"
+       hx-get="/api/visualizer/search"
+       hx-target="#visualizer-results"
+       hx-swap="innerHTML"
+       hx-vals='{"movement": "{{ item }}"}'
+       style="display: block; padding: 0.5rem 1rem; cursor: pointer;">
+        {{ item }}
+    </a>
+    {% endfor %}
+</div>
+{% endif %}

@@ -1,0 +1,14 @@
+{% if results %}
+<div class="box" style="padding: 0; margin-top: 0.25rem;">
+    {% for item in results %}
+    <a class="dropdown-item"
+       hx-post="/api/autocomplete/select"
+       hx-target="#form-content"
+       hx-swap="innerHTML"
+       hx-vals='{"field": "{{ input_name }}", "value": "{{ item }}", "movement": "{{ current_movement }}", "equipment_type": "{{ current_equipment }}", "weight": "{{ current_weight }}", "n_of_reps": "{{ current_reps }}"}'
+       style="display: block; padding: 0.5rem 1rem; cursor: pointer;">
+        {{ item }}
+    </a>
+    {% endfor %}
+</div>
+{% endif %}

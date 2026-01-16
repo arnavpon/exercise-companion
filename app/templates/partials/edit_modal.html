@@ -1,0 +1,78 @@
+<div class="modal is-active">
+    <div class="modal-background"
+         hx-get="/api/dismiss"
+         hx-target="#modal-container"
+         hx-swap="innerHTML"></div>
+    <div class="modal-card">
+        <header class="modal-card-head">
+            <p class="modal-card-title">Edit Set</p>
+            <button class="delete" aria-label="close"
+                    hx-get="/api/dismiss"
+                    hx-target="#modal-container"
+                    hx-swap="innerHTML"></button>
+        </header>
+        <section class="modal-card-body">
+            <form hx-put="/api/exercises/weightlifting/{{ set.id }}"
+                  hx-target="#modal-container"
+                  hx-swap="innerHTML">
+
+                <div class="field">
+                    <label class="label">Movement</label>
+                    <div class="control">
+                        <input class="input" type="text" name="movement"
+                               value="{{ set.movement }}" required>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">Equipment Type</label>
+                    <div class="control">
+                        <div class="select is-fullwidth">
+                            <select name="equipment_type">
+                                {% for eq in equipment_types %}
+                                <option value="{{ eq }}"
+                                        {% if eq == set.equipment_type %}selected{% endif %}>
+                                    {{ eq | title }}
+                                </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">Weight (lbs)</label>
+                    <div class="control">
+                        <input class="input" type="number" step="0.5" name="weight"
+                               value="{{ set.weight }}" required>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label"># of Reps</label>
+                    <div class="control">
+                        <input class="input" type="number" name="n_of_reps"
+                               value="{{ set.n_of_reps }}" required>
+                    </div>
+                </div>
+
+                <div class="field is-grouped">
+                    <div class="control">
+                        <button class="button is-success" type="submit">
+                            <span class="icon"><i class="fas fa-save"></i></span>
+                            <span>Save</span>
+                        </button>
+                    </div>
+                    <div class="control">
+                        <button class="button" type="button"
+                                hx-get="/api/dismiss"
+                                hx-target="#modal-container"
+                                hx-swap="innerHTML">
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </section>
+    </div>
+</div>

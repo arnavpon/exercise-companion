@@ -1,0 +1,8 @@
+{% include "partials/logger_form_inner.html" %}
+
+<div id="notifications" hx-swap-oob="innerHTML">
+    <div class="notification is-success">
+        <button class="delete" hx-get="/api/dismiss" hx-swap="outerHTML" hx-target="closest .notification"></button>
+        Set added successfully!
+    </div>
+</div>

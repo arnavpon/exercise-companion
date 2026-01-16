@@ -1,0 +1,36 @@
+<div class="tabs is-centered is-boxed is-medium">
+    <ul>
+        <li {% if active_tab == 'logger' or not active_tab %}class="is-active"{% endif %}>
+            <a hx-get="/api/exercises/form"
+               hx-target="#main-content"
+               hx-swap="innerHTML">
+                <span class="icon"><i class="fas fa-dumbbell"></i></span>
+                <span>Log Workout</span>
+            </a>
+        </li>
+        <li {% if active_tab == 'summary' %}class="is-active"{% endif %}>
+            <a hx-get="/api/summary"
+               hx-target="#main-content"
+               hx-swap="innerHTML">
+                <span class="icon"><i class="fas fa-calendar-day"></i></span>
+                <span>Summary</span>
+            </a>
+        </li>
+        <li {% if active_tab == 'history' %}class="is-active"{% endif %}>
+            <a hx-get="/api/visualizer"
+               hx-target="#main-content"
+               hx-swap="innerHTML">
+                <span class="icon"><i class="fas fa-history"></i></span>
+                <span>History</span>
+            </a>
+        </li>
+        <li {% if active_tab == 'import' %}class="is-active"{% endif %}>
+            <a hx-get="/api/import"
+               hx-target="#main-content"
+               hx-swap="innerHTML">
+                <span class="icon"><i class="fas fa-upload"></i></span>
+                <span>Import</span>
+            </a>
+        </li>
+    </ul>
+</div>

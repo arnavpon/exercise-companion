@@ -1,0 +1,76 @@
+<form hx-post="/api/exercises/weightlifting"
+      hx-target="#form-content"
+      hx-swap="innerHTML">
+
+    <div class="field">
+        <label class="label">Movement</label>
+        <div class="control">
+            <input class="input"
+                   type="text"
+                   name="movement"
+                   value="{{ movement_value | default('', true) }}"
+                   placeholder="e.g. bench press"
+                   hx-get="/api/autocomplete/movements"
+                   hx-trigger="keyup changed delay:300ms"
+                   hx-target="#movement-suggestions"
+                   hx-swap="innerHTML"
+                   hx-include="[name='equipment_type'], [name='weight'], [name='n_of_reps']"
+                   autocomplete="off"
+                   required>
+        </div>
+        <div id="movement-suggestions"></div>
+    </div>
+
+    <div class="field">
+        <label class="label">Equipment Type</label>
+        <div class="control">
+            <input class="input"
+                   type="text"
+                   name="equipment_type"
+                   value="{{ equipment_type_value | default('', true) }}"
+                   placeholder="e.g. dumbbell"
+                   hx-get="/api/autocomplete/equipment"
+                   hx-trigger="keyup changed delay:300ms"
+                   hx-target="#equipment-suggestions"
+                   hx-swap="innerHTML"
+                   hx-include="[name='movement'], [name='weight'], [name='n_of_reps']"
+                   autocomplete="off"
+                   required>
+        </div>
+        <div id="equipment-suggestions"></div>
+    </div>
+
+    <div class="field">
+        <label class="label">Weight (lbs)</label>
+        <div class="control">
+            <input class="input"
+                   type="number"
+                   name="weight"
+                   value="{{ weight_value | default('', true) }}"
+                   step="0.5"
+                   placeholder="0.0"
+                   required>
+        </div>
+    </div>
+
+    <div class="field">
+        <label class="label"># of Reps</label>
+        <div class="control">
+            <input class="input"
+                   type="number"
+                   name="n_of_reps"
+                   value="{{ n_of_reps_value | default('', true) }}"
+                   placeholder="0"
+                   required>
+        </div>
+    </div>
+
+    <div class="field">
+        <div class="control">
+            <button class="button is-primary" type="submit">
+                <span class="icon"><i class="fas fa-save"></i></span>
+                <span>Save</span>
+            </button>
+        </div>
+    </div>
+</form>
