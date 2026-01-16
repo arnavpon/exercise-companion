@@ -1,4 +1,4 @@
-import libsql_client
+import libsql_experimental as libsql
 from app.config import TURSO_DATABASE_URL, TURSO_AUTH_TOKEN, EQUIPMENT_TYPES
 
 _client = None
@@ -8,10 +8,12 @@ def get_db():
     """Get database client (singleton)."""
     global _client
     if _client is None:
-        _client = libsql_client.create_client_sync(
-            url=TURSO_DATABASE_URL,
+        _client = libsql.connect(
+            database="local_replica.db",
+            sync_url=TURSO_DATABASE_URL,
             auth_token=TURSO_AUTH_TOKEN,
         )
+        _client.sync()
     return _client
 
 

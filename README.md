@@ -4,18 +4,12 @@ A fitness tracking web app built with FastAPI, HTMX, Bulma CSS, and Turso (SQLit
 
 ## Setup
 
-1. Copy the environment template and add your Turso credentials:
-   ```bash
-   cp .env.example .env
-   # Edit .env with your Turso database URL and auth token
-   ```
-
-2. Run the server:
+1. Run the server:
    ```bash
    uv run uvicorn app.main:app --reload
    ```
 
-3. Open http://localhost:8000 in your browser
+2. Open http://localhost:8000 in your browser
 
 ## Features
 
